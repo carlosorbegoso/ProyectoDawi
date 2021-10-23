@@ -75,13 +75,13 @@
 							<td th:text="${V.trabajador_telefono}"> </td>
 
 							<td>
-                                <form action="@{/editar}" method="post">
-                                    <input type="hidden" name="trabajador_codigo" th:value="${V.trabajador_codigo}">
+                                <form action="@{/Teditar}" method="post">
+                                    <input type="hidden" name="trabajador_codigo" th:value="${V.Trabajador_codigo}">
 								    <button  type="submit" class="btn btn-sm btn-warning "> <i class="fas fa-fw fa-pencil-alt"></i></button>
                                 </form>
 							</td>
 							<td>
-                                <form action="@{/eliminar}" method="post">
+                                <form action="@{/Teliminar}" method="post">
                                     <input type="hidden" name="trabajador_codigo" th:value="${V.trabajador_codigo}">
 								    <button  type="submit" class="btn btn-sm btn-danger "> <i class="far fa-times-circle"></i></button>
                                 </form>
