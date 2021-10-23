@@ -52,7 +52,7 @@
 					<div class="" style="overflow-y: auto;">
 						<div class="" id="divUsuarioFormContenido">
 							
-							<form id="frmTrabajador" class="form" method="post" th:object="${ruta}">
+							<form id="frmRuta" class="form" method="post" th:object="${ruta}">
 								<div class="container">
 									<!-- Datos personales -->
 									<h6>DATOS DE RUTA</h6>
@@ -63,21 +63,25 @@
 											<div class="form-group input-group-sm">
 												<label> CODIGO:</label>
 												
-												<input th:field="*{ruta_codigo}" class="form-control" name="Trabajador_codigo" type="text"	placeholder="CODIGO"  autocomplete="off" />
+												<input th:field="*{ruta_codigo}" class="form-control" name="ruta_codigo" type="number"	placeholder="CODIGO"  autocomplete="off" />
 											</div>
 										</div>
 
 										<div class="col-lg-4">
 											<div class="form-group input-group-sm">
 												<label> NOMBRE:</label>
-												<input th:field="*{ruta_nombre}" class="form-control" name="Trabajador_nombre" type="text"	placeholder="NOMBRES"  autocomplete="off"  />
+												<input th:field="*{ruta_nombre}" class="form-control" name="ruta_nombre" type="text"	placeholder="NOMBRE"  autocomplete="off"  />
 											</div>
 										</div>
 									
 										<div class="col-lg-4">
 											<div class="form-group input-group-sm">
 												<label> TIPO :</label>
-												<input th:field="*{ruta_tipo}" class="form-control" name="Trabajador_apellidos" type="text" placeholder="APELLIDO PATERNO"  autocomplete="off"  />
+												<select class="form-select" th:field="*{ruta_tipo}">
+													<option value="X" selected>Elige el tipo de ruta</option>
+													<option value="A">A</option>
+													<option value="B">B</option>
+												</select>
 											</div>
 										</div>
 									</div>
