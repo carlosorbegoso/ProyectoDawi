@@ -23,15 +23,17 @@ public class TrabajadorController {
 
 
     @PostMapping("/Tguardar")
-    public String grabarPag(@ModelAttribute Trabajador trabajador){
-        System.out.println(trabajador);
-        repoTrabajador.save(trabajador);
+    public String grabarPag(@ModelAttribute Trabajador t, Model model){
+        System.out.println(t);
+        repoTrabajador.save(t);
+        model.addAttribute("listaTrabajador",repoTrabajador.findAll());
+
         return "trabajador";
     }
 
     @GetMapping("/Tlistar")
     public String listadoTrabajador(@ModelAttribute Trabajador trabajador,Model model){
-        model.addAttribute("listaVehiculos",repoTrabajador.findAll());
+        model.addAttribute("listaTrabajador",repoTrabajador.findAll());
         return "trabajador.listar";
     }
 
@@ -42,10 +44,10 @@ public class TrabajadorController {
         return "trabajador";
     }
     @PostMapping("/Teliminar")
-    public String eliminarTrabajador(@ModelAttribute Trabajador trabajador){
+    public String eliminarTrabajador(@ModelAttribute Trabajador t,Model model){
         // System.out.println(t);
-        
-        repoTrabajador.delete(trabajador);
+        repoTrabajador.delete(t);
+        model.addAttribute("listaTrabajador",repoTrabajador.findAll());
        
         // buscarTrabajador(Trabajador,trabajador);
         return "trabajador.listar";
