@@ -22,12 +22,12 @@ public class TrabajadorController {
     }
 
 
-    // @PostMapping("/grabar")
-    // public String grabarPag(@ModelAttribute Trabajador trabajador){
-    //     System.out.println(trabajador);
-    //     repository.save(trabajador);
-    //     return "crudProductos";
-    // }
+    @PostMapping("/Tguardar")
+    public String grabarPag(@ModelAttribute Trabajador trabajador){
+        System.out.println(trabajador);
+        repoTrabajador.save(trabajador);
+        return "trabajador";
+    }
 
     @GetMapping("/Tlistar")
     public String listadoTrabajador(@ModelAttribute Trabajador trabajador,Model model){
