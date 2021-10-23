@@ -1,140 +1,170 @@
 <div th:replace="/fragments/menu :: navbar"></div>
-<div class="container mb-2 p-1 " style="border-radius: 5px; margin-top: 52px;" >
-    <div class="card ">
-        <div class="car-body ">
-            <div class="input-group input-group-sm ">
-                <button class="btn  mr-1 " type="button">
-                    <i class="fas fa-fw fa-list"></i>
-                </button>
-                <label class="form-control ">
-                    <a href="javascript:void(0);"><i class="fa fa-fw fa-home"></i> </a>
-                    <span class="d-none d-sm-inline">
-                        CONTROL /
-                    </span>
-                
-                    <span class="" id="lblTitulo">	VEHICULO</span>
-                    <span style="float:right;line-height:20px;">
-                        <span  class="fa fa-fw fa-globe hidden-xs "></span>
-                    </span>
-                </label>
-                <div class="btn-group btn-group-sm">
-                    <button (click)="Nuevo()" class="btn btn-outline-primary border-secondary ml-1 text-dark btn-action" data-action="nuevo" id="btnNuevoUsuario" title="Nuevo">
-                        <span class="fa fa-fw fa-file"></span>
-                    </button>
-                    <button (click)="Listar()"  class="btn btn-outline-primary  border-secondary ml-1 text-dark btn-action" data-action="buscar" id="btnDocBuscar" title="Buscar">
+<div class="container mb-2 p-1 " style="border-radius: 5px; margin-top: 52px;">
+	<div class="card ">
+		<div class="car-body ">
+			<div class="input-group input-group-sm ">
+				<button class="btn  mr-1 " type="button">
+					<i class="fas fa-fw fa-list"></i>
+				</button>
+				<label class="form-control ">
+					<a href="javascript:void(0);"><i class="fa fa-fw fa-home"></i> </a>
+					<span class="d-none d-sm-inline">
+						CONTROL /
+					</span>
+
+					<span class="" id="lblTitulo"> VEHICULO</span>
+					<span style="float:right;line-height:20px;">
+						<span class="fa fa-fw fa-globe hidden-xs "></span>
+					</span>
+				</label>
+				<div class="btn-group btn-group-sm">
+					<button (click)="Nuevo()" class="btn btn-outline-primary border-secondary ml-1 text-dark btn-action"
+						data-action="nuevo" id="btnNuevoUsuario" title="Nuevo">
+						<span class="fa fa-fw fa-file"></span>
+					</button>
+					<!--
+                    <button (click)="ListarV()"  class="btn btn-outline-primary  border-secondary ml-1 text-dark btn-action" data-action="buscar" id="btnDocBuscar" title="Buscar">
                         <span class="fa fa-fw fa-search"></span>
                     </button>
-                </div>
-            </div>
-        </div>
-    </div>
+                    -->
+					<a href="/listarV" class="btn btn-outline-primary  border-secondary ml-1 text-dark btn-action"
+						data-action="buscar" id="btnDocBuscar" title="Buscar">
+						<span class="fa fa-fw fa-search"></span>
+					</a>
+
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 <!-- VEHICULO FORMULARIO -->
-<span class="nsPanel" id="cardVehiculosForm" >
-    <div class="container-sm p-1">
-        <div class="card" >
-            <div class="card-header p-1">
-                <div class="input-group input-group-sm">
-                    <button class="btn btn-outline-secondary border-white  " type="button" title="" disabled>
-                        <span class="fas fa-fw fa-user-alt fa-lg"></span>
-                    </button>
-                    <label class="form-control ">FORMULARIO</label>
-                    <button  (click)="Guardar(modelVehiculo)"  class="btn btn-outline-primary border-secondary ml-1 text-dark btn-action" id="btnVehiculoGuardar" data-action="vehiculo.guardar" type="button" title="Guardar">
-                        <i class="fa fa-fw fa-save"></i>
-                    </button>
-                </div>
-            </div>
-        
-            <div class="card-body p-2" style="height: 75vh;" >
-                <div class="" style="overflow-y: auto;">
-                    <div class="" id="divUsuarioFormContenido">
-                        
-                        <form id="frmTrabajador" class="form ">
-                            <div class="container">
-                                <!-- Datos vehiculo -->
-                                <h6>DATOS VEHICULO</h6>
-                                <hr class=" dropdown-divider">
-                                <div class="row mt-2">
-                                    <div class="col-lg-2">
-                                        <div class="form-group input-group-sm">
-                                            <label >CODIGO</label>
-                                            <input  [(ngModel)]="modelVehiculo.vehiculo_codigo" class="form-control" name="vehiculo_codigo" type="number">
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="form-group input-group-sm">
-                                            <label> PLACA:</label>
-                                            <input [(ngModel)]="modelVehiculo.vehiculo_placa" class="form-control" name="vehiculo_placa" type="text">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <label for="cboVehiculoMarca" > MARCA:</label>
-                                        <div class="input-group input-group-sm">
-                                            <input [(ngModel)]="modelVehiculo.vehiculo_marca" class="form-control" name="vehiculo_marca"type="text" >
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="form-group input-group-sm">
-                                            <label> MODELO:</label>
-                                            <input [(ngModel)]="modelVehiculo.vehiculo_modelo" class="form-control" name="vehiculo_modelo" >
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row mt-2">
-                                    <div class="col-lg-4">
-                                        <div class="form-group input-group-sm">
-                                            <label> COLOR: </label>
-                                            <input [(ngModel)]="modelVehiculo.vehiculo_color"  class="form-control" type="color" name="vehiculo_color">
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                
-                        </form>
+<!-- <span class="nsPanel" id="cardVehiculosForm"> -->
+<form action="/grabarV" method="post" th:object="${vehiculo}">
+	<div class="container-sm p-1">
+		<div class="card">
+			<div class="card-header p-1">
+				<div class="input-group input-group-sm">
+					<button class="btn btn-outline-secondary border-white  " type="button" title="" disabled>
+						<a href="/vehiculo" class="fas fa-fw fa-user-alt fa-lg"></a>
+					</button>
+					<label class="form-control ">FORMULARIO</label>
+					<!--
+					<button (click)="Guardar(modelVehiculo)"
+						class="btn btn-outline-primary border-secondary ml-1 text-dark btn-action"
+						id="btnVehiculoGuardar" data-action="vehiculo.guardar" type="button" title="Guardar">
+						<i class="fa fa-fw fa-save"></i>
+					</button>
+					
+					<button class="btn btn-outline-primary border-secondary ml-1 text-dark btn-action" 
+							id="btnVehiculoGuardar" data-action="vehiculo.guardar" type="button" title="Guardar">
+							<i class="fa fa-fw fa-save"></i>
+					</button>
+					
+					-->
+					<button type="submit" class="btn btn-outline-primary border-secondary ml-1 text-dark btn-action" title="Guardar">
+						<i class="fa fa-fw fa-save"></i>
+					</button>
 
-                    </div>
-                </div>
-            </div>
-            <div class="card-footer ">
-                <form action="javascript:void();">
-                    <div class="input-group input-group-sm mt-2">
-                        <button class="btn btn-outline-light border" type="button">
-                            <i class="fas fa-fw fa-angle-double-left"></i>
-                        </button>
-                            <label class="form-control"></label>
-                        <button class="btn btn-outline-light border" type="button">
-                            <i class="fas fa-fw fa-angle-double-right"></i>
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</span>
+				</div>
+			</div>
 
-    <!-- USUARIO BUSCAR FILTRO -->
-<div class="modal fade" id="dlgVehiculosBuscarFiltro" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-scrollable">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h6 class="modal-title" id="dlgUsuarioBuscarFiltroLabel">USUARIO / BUSCAR / FILTRO</h6>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <!--
+			<div class="card-body p-2" style="height: 75vh;">
+				<div class="" style="overflow-y: auto;">
+					<div class="" id="divUsuarioFormContenido">
+
+						<form action="/grabarV" id="frmVehiculo" class="form " method="post" th:object="${vehiculo}">
+							<div class="container">
+							
+								<!-- Datos vehiculo -->
+								<h6>DATOS VEHICULO</h6>
+								<hr class=" dropdown-divider">
+								<div class="row mt-2">
+									<div class="col-lg-2">
+										<div class="form-group input-group-sm">
+											<label>CODIGO</label>
+											<input th:field="*{Vehiculo_codigo}" class="form-control"
+												name="vehiculo_codigo" type="number">
+										</div>
+
+									</div>
+									<div class="col-lg-4">
+										<div class="form-group input-group-sm">
+											<label> PLACA:</label>
+											<input th:field="*{Vehiculo_placa}" class="form-control"
+												name="vehiculo_placa" type="text">
+										</div>
+									</div>
+									<div class="col-lg-2">
+										<label for="cboVehiculoMarca"> MARCA:</label>
+										<div class="input-group input-group-sm">
+											<input th:field="*{Vehiculo_marca}" class="form-control"
+												name="vehiculo_marca" type="text">
+										</div>
+									</div>
+									<div class="col-lg-4">
+										<div class="form-group input-group-sm">
+											<label> MODELO:</label>
+											<input th:field="*{Vehiculo_modelo}" class="form-control"
+												name="vehiculo_modelo">
+										</div>
+									</div>
+								</div>
+								<div class="row mt-2">
+									<div class="col-lg-4">
+										<div class="form-group input-group-sm">
+											<label> COLOR: </label>
+											<input th:field="*{Vehiculo_color}" class="form-control"
+												type="color" name="vehiculo_color">
+										</div>
+									</div>
+									<div class="col-4">
+
+									</div>
+								</div>
+							</div>
+
+						</form>
+
+					</div>
+				</div>
+			</div>
+			<div class="card-footer ">
+				<form action="javascript:void();">
+					<div class="input-group input-group-sm mt-2">
+						<button class="btn btn-outline-light border" type="button">
+							<i class="fas fa-fw fa-angle-double-left"></i>
+						</button>
+						<label class="form-control"></label>
+						<button class="btn btn-outline-light border" type="button">
+							<i class="fas fa-fw fa-angle-double-right"></i>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</form>
+
+<!-- USUARIO BUSCAR FILTRO -->
+<div class="modal fade" id="dlgVehiculosBuscarFiltro" data-backdrop="static" data-keyboard="false" tabindex="-1"
+	aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg modal-dialog-scrollable">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h6 class="modal-title" id="dlgUsuarioBuscarFiltroLabel">USUARIO / BUSCAR / FILTRO</h6>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<!--
                     AQUI CODIGO ...
                 -->
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">CANCELAR</button>
-                <button type="button" class="btn btn-sm btn-primary">ACEPTAR</button>
-            </div>
-        </div>
-    </div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">CANCELAR</button>
+				<button type="button" class="btn btn-sm btn-primary">ACEPTAR</button>
+			</div>
+		</div>
+	</div>
 </div>
