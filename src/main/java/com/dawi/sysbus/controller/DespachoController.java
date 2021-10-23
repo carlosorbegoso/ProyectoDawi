@@ -10,14 +10,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class DespachoController {
-    @Autowired
-    private ITrabajadorRepositroy repoTrabajador;
-    @GetMapping("/despacho")
-    public String cargarTrabajador(Model model) {
-        model.addAttribute("trabajador",new Trabajador());
-        // genera listado de vehiculos
-        model.addAttribute("listaVehiculo",repoTrabajador.findAll());
+    // @Autowired
+
+    @GetMapping("/despachar")
+	public String cargarRuta(Model model) {
+        // model.addAttribute("ruta", new Ruta());
         return "despacho";
     }
+    // private ITrabajadorRepositroy repoTrabajador;
+    // @GetMapping("/despacho")
+    // public String cargarTrabajador(Model model) {
+    //     model.addAttribute("trabajador",new Trabajador());
+    //     // genera listado de vehiculos
+    //     model.addAttribute("listaVehiculo",repoTrabajador.findAll());
+    //     return "despacho";
+    // }
 
 }

@@ -28,7 +28,7 @@ public class TrabajadorController {
         repoTrabajador.save(t);
         model.addAttribute("listaTrabajador",repoTrabajador.findAll());
 
-        return "trabajador";
+        return "trabajador.listar";
     }
 
     @GetMapping("/Tlistar")
