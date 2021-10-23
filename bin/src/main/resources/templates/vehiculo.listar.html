@@ -1,0 +1,137 @@
+<div th:replace="/fragments/menu :: navbar"></div>
+
+<div class="container mb-2 p-1 " style="border-radius: 5px; margin-top: 52px;" >
+    <div class="card ">
+        <div class="car-body ">
+            <div class="input-group input-group-sm ">
+                <button class="btn  mr-1 " type="button">
+                    <i class="fas fa-fw fa-list"></i>
+                </button>
+                <label class="form-control ">
+                    <a href="javascript:void(0);"><i class="fa fa-fw fa-home"></i> </a>
+                    <span class="d-none d-sm-inline">
+                        CONTROL /
+                    </span>
+                
+                    <span class="" id="lblTitulo">	VEHICULO</span>
+                    <span style="float:right;line-height:20px;">
+                        <span  class="fa fa-fw fa-globe hidden-xs "></span>
+                    </span>
+                </label>
+                <div class="btn-group btn-group-sm">
+                    <button (click)="Nuevo()" class="btn btn-outline-primary border-secondary ml-1 text-dark btn-action" data-action="nuevo" id="btnNuevoUsuario" title="Nuevo">
+                        <span class="fa fa-fw fa-file"></span>
+                    </button>
+                    <button   class="btn btn-outline-primary  border-secondary ml-1 text-dark btn-action" data-action="buscar" id="btnDocBuscar" title="Buscar">
+                        <span class="fa fa-fw fa-search"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- VEHICULO BUSCAR -->
+<span class="nsPanel" id="cardVehiculosBuscar">
+    <div class="container-sm p-1" >
+        <div class="card">
+            <div class="card-header p-1">
+                <div class="input-group input-group-sm">
+                    <button class="btn btn-outline-secondary border-white mr-1 " type="button" title="" disabled>
+                        <span class="fas fa-fw fa-user-alt fa-lg"></span>
+                    </button>
+                    <label class="form-control text-truncate">BUSCAR</label>
+                    <button class="btn btn-outline-warning border-secondary ml-1 text-dark btn-action" id="btnUsuarioBuscarFiltro" data-action="buscar.filtro" type="button" title="Filtro">
+                        <i class="fa fa-fw fa-tasks"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body p-2 overflow-auto" style="height: 75vh;">
+                <!-- DIBUJAR LISTA  -->
+                <ng-template [ngIf]="desktop" [ngIfElse]="mobile">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th >#</th>
+                                <th >CODIGO</th>
+                                <th>MARCA</th>
+                                <th>MODELO</th>
+                                <th>PLACA</th>
+                                <th>COLOR</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor=" let vehiculo of vehiculos, let indice=index" class="text-center">
+                                <th scope="row">{{indice+1}}</th>
+                                <td>{{ vehiculo.vehiculo_codigo }}</td>	
+                                <td>{{ vehiculo.vehiculo_marca }}</td>
+                                <td>{{ vehiculo.vehiculo_modelo }}</td>
+                                <td>{{ vehiculo.vehiculo_placa }}</td>
+                                <td>
+                                    <input class="form-control"value="{{ vehiculo.vehiculo_color}}"type="color" disabled>
+                                </td>
+                                <td>
+                                    <button (click)="Editar(vehiculo)" class="btn btn-sm btn-danger "> <i class="fas fa-fw fa-pencil-alt"></i></button>
+                                    <button (click)="Delete(vehiculo)" class="btn btn-sm btn-warning ms-1"> <i class="far fa-times-circle"></i></button>
+                                
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                
+                </ng-template>
+                  
+                <ng-template  #mobile>
+                    <div class="list-group list-group-flush">
+                        <div *ngFor=" let vehiculo of vehiculos" class="text-center">
+                            <button type="button"class="list-group-item list-group-item-action p-2">
+                                <div class="form-row">
+                                    <div class="col-1 pl-0 pr-0 text-center" style="font-size:9pt;">
+                                        {{ vehiculo.vehiculo_codigo }}
+                                        <div class="h-100 ${estado}" style="width:3px;float:left"></div>
+                                    </div>
+                                    <div class="col-11">
+                                        <div class="form-row">
+                                            <div class="col-12">
+                                                {{ vehiculo.vehiculo_marca }}
+                                            </div>
+                                            <div class="col-4 text-right">
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-12">
+                                                {{ vehiculo.vehiculo_modelo }}
+                                            </div>
+                                            <div class="col-4 text-right">
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-12 text-left text-truncate" style="font-size:9pt;">
+                                                PLACA: {{ vehiculo.vehiculo_placa }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>		
+                            </button>
+                        </div>
+                    </div>
+                  </ng-template>
+        
+            </div>
+            <div class="card-footer ">
+                <form action="javascript:void();">
+                    <div class="input-group input-group-sm mt-2">
+                        <button class="btn btn-outline-light border" type="button">
+                            <i class="fas fa-fw fa-angle-double-left"></i>
+                        </button>
+                            <label class="form-control"></label>
+                        <button class="btn btn-outline-light border" type="button">
+                            <i class="fas fa-fw fa-angle-double-right"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</span>

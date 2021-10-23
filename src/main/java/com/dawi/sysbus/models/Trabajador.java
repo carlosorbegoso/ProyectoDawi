@@ -19,6 +19,7 @@ public class Trabajador {
 	private String	Trabajador_dni;
 	private String	Trabajador_cargo;
 	private String	Trabajador_telefono;
+
 	public int getTrabajador_codigo() {
 		return Trabajador_codigo;
 	}
@@ -55,5 +56,4 @@ public class Trabajador {
 	public void setTrabajador_telefono(String trabajador_telefono) {
 		Trabajador_telefono = trabajador_telefono;
 	}
-	
 }

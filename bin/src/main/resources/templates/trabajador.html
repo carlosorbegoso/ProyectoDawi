@@ -23,7 +23,7 @@
 							<span class="fa fa-fw fa-file"></span>
 						</button>
 					
-							<a href="/Tlistar" class="btn btn-outline-primary  border-secondary ml-1 text-dark btn-action" data-action="buscar" id="btnDocBuscar" title="Buscar">
+							<a href="/listar" class="btn btn-outline-primary  border-secondary ml-1 text-dark btn-action" data-action="buscar" id="btnDocBuscar" title="Buscar">
 								<span class="fa fa-fw fa-search"></span>
 							</a>
 						
@@ -33,16 +33,16 @@
 		</div>
 	</div>
 	<!-- TRABJADOR FORMULARIO -->
-	<form class="nsPanel" id="cardEmpleadoForm" th:action="@{/Tguardar}" method="post" th:object="${trabajador}" >
+	<span class="nsPanel" id="cardEmpleadoForm" >
 		<div class="container-sm p-1">
 			<div class="card" >
 				<div class="card-header p-1">
 					<div class="input-group input-group-sm">
-						<button class="btn btn-outline-secondary border-white" type="button" title="" >
+						<button class="btn btn-outline-secondary border-white  " type="button" title="" >
 							<span class="fas fa-fw fa-user-alt fa-lg"></span>
 						</button>
 						<label class="form-control ">FORMULARIO</label>
-						<button class="btn btn-outline-primary border-secondary ml-1 text-dark btn-action" id="btnTrabajadorGuardar" type="submit" title="Guardar">
+						<button class="btn btn-outline-primary border-secondary ml-1 text-dark btn-action" id="btnConductroGuardar" data-action="empleado.guardar" type="button" title="Guardar">
 							<i class="fa fa-fw fa-save"></i>
 						</button>
 					</div>
@@ -52,7 +52,7 @@
 					<div class="" style="overflow-y: auto;">
 						<div class="" id="divUsuarioFormContenido">
 							
-							<!-- <form id="frmTrabajador" class="form" > -->
+							<form id="frmTrabajador" class="form" method="post" th:object="${trabajador}">
 								<div class="container">
 									<!-- Datos personales -->
 									<h6>DATOS PERSONALES</h6>
@@ -156,7 +156,7 @@
 									</div>-->
 								</div>
 							
-							<!-- </form> -->
+							</form>
 
 						</div>
 					</div>
@@ -176,4 +176,4 @@
 				</div>
 			</div>
 		</div>
-	</form>
+	</span>

@@ -22,20 +22,20 @@ public class TrabajadorController {
     }
 
 
-    // @PostMapping("/grabar")
-    // public String grabarPag(@ModelAttribute Trabajador trabajador){
-    //     System.out.println(trabajador);
-    //     repository.save(trabajador);
-    //     return "crudProductos";
-    // }
+    @PostMapping("/Tguardar")
+    public String grabarPag(@ModelAttribute Trabajador trabajador){
+        System.out.println(trabajador);
+        repoTrabajador.save(trabajador);
+        return "trabajador";
+    }
 
-    @GetMapping("/listar")
+    @GetMapping("/Tlistar")
     public String listadoTrabajador(@ModelAttribute Trabajador trabajador,Model model){
         model.addAttribute("listaVehiculos",repoTrabajador.findAll());
         return "trabajador.listar";
     }
 
-    @PostMapping("/editar")
+    @PostMapping("/Teditar")
     public String buscarTrabajador(@ModelAttribute Trabajador t, Model model){
         System.out.println(t);
         model.addAttribute("trabajador",repoTrabajador.findById(t.getTrabajador_codigo()));
