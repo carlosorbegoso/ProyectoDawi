@@ -77,11 +77,13 @@
 							<td>
                                 <form action="@{/editar}" method="post">
                                     <input type="hidden" name="trabajador_codigo" th:value="${V.trabajador_codigo}">
-								    <button  type="submit" class="btn btn-sm btn-danger "> <i class="fas fa-fw fa-pencil-alt"></i></button>
+								    <button  type="submit" class="btn btn-sm btn-warning "> <i class="fas fa-fw fa-pencil-alt"></i></button>
                                 </form>
+							</td>
+							<td>
                                 <form action="@{/eliminar}" method="post">
                                     <input type="hidden" name="trabajador_codigo" th:value="${V.trabajador_codigo}">
-								    <button  type="submit" class="btn btn-sm btn-danger "> <i class="fas fa-fw fa-pencil-alt"></i></button>
+								    <button  type="submit" class="btn btn-sm btn-danger "> <i class="far fa-times-circle"></i></button>
                                 </form>
 							</td>
 						</tr>
