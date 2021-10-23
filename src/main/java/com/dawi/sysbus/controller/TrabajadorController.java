@@ -41,5 +41,14 @@ public class TrabajadorController {
         model.addAttribute("trabajador",repoTrabajador.findById(t.getTrabajador_codigo()));
         return "trabajador";
     }
+    @PostMapping("/Teliminar")
+    public String eliminarTrabajador(@ModelAttribute Trabajador trabajador){
+        // System.out.println(t);
+        
+        repoTrabajador.delete(trabajador);
+       
+        // buscarTrabajador(Trabajador,trabajador);
+        return "trabajador.listar";
+    }
     
 }

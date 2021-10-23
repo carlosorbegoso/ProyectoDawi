@@ -22,10 +22,10 @@ public class RutaController {
         return "ruta";
     }
 	
-	@PostMapping("/ruta/grabar")
+	@PostMapping("/Rgrabar")
 	public String grabarPag(@ModelAttribute Ruta ruta) {
 		System.out.println(ruta);
-		
+		repoRuta.save(ruta);
 		return "ruta";
 	}
 }
