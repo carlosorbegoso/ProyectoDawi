@@ -33,7 +33,7 @@
 		</div>
 	</div>
 	<!-- RUTA FORMULARIO -->
-	<span class="nsPanel" id="cardEmpleadoForm" >
+	<form id="frmRuta" action="/Rgrabar" class="form" method="post" th:object="${ruta}">
 		<div class="container-sm p-1">
 			<div class="card" >
 				<div class="card-header p-1">
@@ -42,7 +42,8 @@
 							<span class="fas fa-fw fa-user-alt fa-lg"></span>
 						</button>
 						<label class="form-control ">FORMULARIO</label>
-						<button class="btn btn-outline-primary border-secondary ml-1 text-dark btn-action" id="btnConductroGuardar" data-action="empleado.guardar" type="button" title="Guardar">
+						
+						<button class="btn btn-outline-primary border-secondary ml-1 text-dark btn-action"  type="submit" title="Guardar">
 							<i class="fa fa-fw fa-save"></i>
 						</button>
 					</div>
@@ -52,7 +53,7 @@
 					<div class="" style="overflow-y: auto;">
 						<div class="" id="divUsuarioFormContenido">
 							
-							<form id="frmRuta" class="form" method="post" th:object="${ruta}">
+							
 								<div class="container">
 									<!-- Datos personales -->
 									<h6>DATOS DE RUTA</h6>
@@ -86,7 +87,7 @@
 										</div>
 									</div>
 								</div>
-							</form>
+							
 
 						</div>
 					</div>
@@ -106,4 +107,4 @@
 				</div>
 			</div>
 		</div>
-	</span>									
+	</form>		
