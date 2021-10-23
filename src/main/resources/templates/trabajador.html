@@ -1,0 +1,179 @@
+
+<div th:replace="/fragments/menu :: navbar"></div>
+    <div class="container mb-2 p-1 " style="border-radius: 5px; margin-top: 52px;" >
+		<div class="card ">
+			<div class="car-body ">
+				<div class="input-group input-group-sm ">
+					<button class="btn  mr-1 " type="button">
+						<i class="fas fa-fw fa-list"></i>
+					</button>
+					<label class="form-control ">
+						<a href="javascript:void(0);"><i class="fa fa-fw fa-home"></i> </a>
+						<span class="d-none d-sm-inline">
+							CONTROL /
+						</span>
+					
+						<span class="" id="lblTitulo">TRABAJADORES</span>
+						<span style="float:right;line-height:20px;">
+							<span  class="fa fa-fw fa-globe hidden-xs "></span>
+						</span>
+					</label>
+					<div class="btn-group btn-group-sm">
+						<button (click)="Nuevo()"  class="btn btn-outline-primary border-secondary ml-1 text-dark btn-action" data-action="nuevo" id="btnNuevoUsuario" title="Nuevo">
+							<span class="fa fa-fw fa-file"></span>
+						</button>
+					
+							<a href="/listar" class="btn btn-outline-primary  border-secondary ml-1 text-dark btn-action" data-action="buscar" id="btnDocBuscar" title="Buscar">
+								<span class="fa fa-fw fa-search"></span>
+							</a>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- TRABJADOR FORMULARIO -->
+	<span class="nsPanel" id="cardEmpleadoForm" >
+		<div class="container-sm p-1">
+			<div class="card" >
+				<div class="card-header p-1">
+					<div class="input-group input-group-sm">
+						<button class="btn btn-outline-secondary border-white  " type="button" title="" >
+							<span class="fas fa-fw fa-user-alt fa-lg"></span>
+						</button>
+						<label class="form-control ">FORMULARIO</label>
+						<button class="btn btn-outline-primary border-secondary ml-1 text-dark btn-action" id="btnConductroGuardar" data-action="empleado.guardar" type="button" title="Guardar">
+							<i class="fa fa-fw fa-save"></i>
+						</button>
+					</div>
+				</div>
+			
+				<div class="card-body p-2" style="height: 75vh;" >
+					<div class="" style="overflow-y: auto;">
+						<div class="" id="divUsuarioFormContenido">
+							
+							<form id="frmTrabajador" class="form" method="post" th:object="${trabajador}">
+								<div class="container">
+									<!-- Datos personales -->
+									<h6>DATOS PERSONALES</h6>
+									<hr class=" dropdown-divider">
+									<div class="row mt-2">
+
+										<div class="col-lg-2">
+											<div class="form-group input-group-sm">
+												<label> CODIGO:</label>
+												
+												<input th:field="*{Trabajador_codigo}" class="form-control" name="Trabajador_codigo" type="text"	placeholder="CODIGO"  autocomplete="off" />
+											</div>
+										</div>
+
+										<div class="col-lg-4">
+											<div class="form-group input-group-sm">
+												<label> NOMBRES:</label>
+												<input th:field="*{Trabajador_nombre}" class="form-control" name="Trabajador_nombre" type="text"	placeholder="NOMBRES"  autocomplete="off"  />
+											</div>
+										</div>
+									
+										<div class="col-lg-4">
+											<div class="form-group input-group-sm">
+												<label> APELLIDO :</label>
+												<input th:field="*{Trabajador_apellidos}" class="form-control" name="Trabajador_apellidos" type="text" placeholder="APELLIDO PATERNO"  autocomplete="off"  />
+											</div>
+										</div>
+									</div>
+									<div class="row mt-2">
+										<div class="col-lg-4">
+											<div class="form-group input-group-sm">
+												<label> DNI:</label>
+												<input th:field="*{Trabajador_dni}" class="form-control" name="Trabajador_dni" type="text" placeholder="EDAD"  autocomplete="off" maxlength="8"  />
+											</div>
+										</div>
+										<div class="col-4">
+											<div class="form-group input-group-sm">
+												<label> CARGO:</label>
+												<input th:field="*{Trabajador_cargo}" name="Trabajador_cargo" class="form-control" >
+											</div>
+										</div>
+										<div class="col-lg-4">
+											<label>TELEFONO</label>
+											<div class="input-group input-group-sm">
+												<input th:field="*{Trabajador_telefono}" name="Trabajador_telefono" id="txtEmpleadoTelefono" class="form-control" >
+											</div>
+										</div>
+									</div>
+									<!-- <div class="row mt-2">
+										<div class="col-12">
+											<label>DIRECCION</label>
+											<div class="input-group input-group-sm">
+												<input id="txtEmpleadoDireccion" class="form-control" disabled>
+											</div>
+										</div>
+									</div> -->
+									<!--  <div class="row">
+										<div class="col-2">
+											<label> UBIGEO</label>
+											<div class="input-group input-group-sm">
+												<button class="btn btn-outline-secondary" id="btnTrabajadorUbigeo" type="button">
+													<i class="fas fa-fw fa-sync-alt"></i>
+												</button>
+												<input class="form-control" type="text" id="txtTrabajadorResidenciaUbigeo" placeholder="UBIGEO"	 autocomplete="off">
+											</div>
+										</div>
+										<div class="col-2">
+											<div class="form-group input-group-sm">
+												<label> DEPARTAMENTO</label>
+												<input class="form-control" type="text" id="txtTrabajadorResidenciaDepartamento" placeholder="DEPARTAMENTO"	 autocomplete="off" style="display: none;">
+												<select class="form-control" id="cboTrabajadorResidenciaDepartamento" >
+												<option ></option>
+												</select>
+											</div>
+										</div>
+										<div class="col-2">
+											<div class="form-group input-group-sm">
+												<label> PROVINCIA</label>
+												<input class="form-control" type="text" id="txtTrabajadorResidenciaProvincia" placeholder="PROVINCIA"  autocomplete="off" style="display: none;">
+												<select class="form-select" id="cboTrabajadorResidenciaProvincia" >
+													<option></option>
+												</select>
+											</div>
+										</div>
+										<div class="col-2">
+											<div class="form-group input-group-sm">
+												<label> DISTRITO</label>
+												<input class="form-control" id="txtTrabajadorResidenciaDistrito" type="text" placeholder="DISTRITO" disabled autocomplete="off" style="display: none;">
+												<select class="form-select" id="cboTrabajadorResidenciaDistrito" disabled>
+													<option></option>
+												</select>
+											</div>
+										</div>
+										<div class="col-4">
+											<div class="form-group input-group-sm">
+												<label>LUGAR DE RESIDENCIA</label>
+												<input class="form-control" id="txtTrabajadorResicendiaDireccion" type="text" placeholder="DIRECCION ACTUAL" disabled autocomplete="off">
+											</div>
+										</div>
+	
+									</div>-->
+								</div>
+							
+							</form>
+
+						</div>
+					</div>
+				</div>
+				<div class="card-footer ">
+					<form action="javascript:void();">
+						<div class="input-group input-group-sm mt-2">
+							<button class="btn btn-outline-light border" type="button">
+								<i class="fas fa-fw fa-angle-double-left"></i>
+							</button>
+								<label class="form-control"></label>
+							<button class="btn btn-outline-light border" type="button">
+								<i class="fas fa-fw fa-angle-double-right"></i>
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</span>
