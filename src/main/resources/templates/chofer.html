@@ -1,0 +1,314 @@
+<html xmlns:th="http://www.thymeleaf.org" >
+<div th:replace="/fragments/menu :: navbar"></div>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<!-- <script type="text/javascript" src="js/jquery.min.js"></script> -->
+
+
+<title>buses </title>
+</head>
+<body> 
+
+ <div class="container">
+	<h3>CHOFERES</h3>
+	<div class="col-md-23" > 
+	<div class="row" style="height: 70px">
+		<div class="col-md-2" >
+				<input class="form-control" id="id_txt_filtro"  name="filtro" placeholder="Ingrese el nombre" type="text"/>
+		</div>
+		<div class="col-md-2" >
+			<button type="button" class="btn btn-primary" id="id_btn_filtrar" style="width: 150px">FILTRA</button>
+		</div>
+		<div class="col-md-2">
+			<button type="button" data-toggle='modal' id="btnRegistra"  data-target="#id_div_modal_registra"  class='btn btn-success' style="width: 150px">REGISTRA</button>
+		</div>
+	</div>
+	<div class="row" > 
+		<div class="col-md-12">
+				<div class="content" >
+		
+					<table id="id_table" class="table table-striped table-bordered" >
+						<thead>
+							<tr>
+								<th style="width: 5%" >ID</th>
+								<th style="width: 15%">CODIGO</th>
+								<th style="width: 8%">NOMBRE</th>
+								<th style="width: 30%">APELLIDO P</th>
+								<th style="width: 30%">APELLIDO M</th>
+								<th style="width: 8%">DNI</th>
+								<th style="width: 8%">TELEFONO</th>
+								<th style="width: 10%">LICENCIA</th>
+								<th style="width: 10%">Actualiza</th>
+								<th style="width: 10%">Elimina</th>
+							</tr>
+						</thead>
+							<tbody>
+							</tbody>
+						</table>
+				</div>	
+		</div>
+	</div>
+	</div>
+	<!-- registar -->
+	<div class="modal fade" id="id_div_modal_registra" >
+		<div class="modal-dialog modal-lg">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="panel-title">Datos chofer</h4>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body" >
+					<form id="id_form_registra"  action="registraActualizaCrudChofer"  method="post">
+						<div class="container">
+							<div class="form">	
+								<div class="form-group">
+									<label class="col-lg-5" for="id_reg_codigo">CODIGO</label>
+									<div class="col-lg-3">
+										<input class="form-control" id="id_reg_codigo" name="tr_codigo"  type="text" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-lg-3 control-label" for="id_reg_nombre">NOMBRE</label>
+									<div class="col-lg-10">
+										<input class="form-control" id="id_reg_nombre" name="nombre"type="text" />
+									</div>
+								</div>		   
+								<div class="form-group">
+									<label class="col-lg-3 control-label" for="id_reg_apellidoP">APELLIDO PATERNO</label>
+									<div class="col-lg-10">
+										<input class="form-control" id="id_reg_apellidoP" name="tr_apellidoP" type="text" />
+									</div>
+								</div>   
+								<div class="form-group">
+									<label class="col-lg-3 control-label" for="id_reg_pellidoM">APELLIDO MATERNO</label>
+									<div class="col-lg-10">
+										<input class="form-control" id="id_reg_pellidoM" name="tr_apellidoM" />
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label class="col-lg-3 control-label" for="id_reg_dni">DNI</label>
+											<div class="col-lg-8">
+												<input class="form-control" id="id_reg_dni" name="tr_dni"  type="text"/>
+											</div>
+										</div>   
+									</div>
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label class="col-lg-3 control-label" for="id_reg_telefono">TELEFONO</label>
+											<div class="col-lg-8">
+												<input class="form-control" id="id_reg_telefono" name="tr_telefono"  type="tel"/>
+											</div>
+										</div> 
+									</div>
+								</div>   
+								
+								<div class="row">
+									<div class="col-6">
+										<div class="form-group">
+											<label class="col-lg-5" for="id_reg_nro_licencia">NUMERO LICENCIA</label>
+											<div class="col-lg-12">
+												<input class="form-control" id="id_reg_nro_licencia" name="tr_lic_numero"  type="text"/>	
+											</div>
+										</div>
+									</div>
+									<div class="col-3">
+										<div class="form-group">
+											<label for="id_reg_clase_licencia">CLASE LICENCIA</label>
+											<div class="col-lg-12">
+												<input class="form-control" id="id_reg_clase_licencia" name="tr_lic_clase" type="text"/>
+											</div>
+										</div>
+									</div>
+									<div class="col-3">
+										<div class="form-group">
+											<label  for="id_reg_categoria_licencia">CATEGORIA LICENCIA</label>
+											<div class="col-lg-12">
+												<input class="form-control" id="id_reg_categoria_licencia" name="tr_lic_categoria"  type="text" />
+											</div>
+										</div>
+									</div>
+								</div>
+							
+								<div class="row">
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label class="col-lg-6" for="id_reg_fecha_expedicion">FECHA EXPEDICION</label>
+											<div class="col-lg-12">
+												<input class="form-control" id="id_reg_fecha_expedicion" name="tr_lic_fecha_expedicion"  type="date"/>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label  for="id_reg_fecharevalidacion">FECHA REVALIDACION</label>
+											<div class="col-lg-12">
+												<input class="form-control" id="id_reg_fecharevalidacion" name="tr_lic_fecha_revalidacion"  type="date"/>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+							</div>						
+						</div>
+					</form>   		
+				</div>
+				<div class="modal-footer">
+					<div class="form-group">
+						<div class="col-lg-2">
+							<button type="button" class="btn btn-primary" id="id_btn_registra">REGISTRAR</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- actualizar -->
+	<div class="modal fade" id="id_div_modal_actualiza" >
+		<div class="modal-dialog modal-lg">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="panel-title">Datos chofer</h4>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body" >
+					<form id="id_form_actualiza"  action="registraActualizaCrudChofer"  method="post">
+						<div class="container">
+							<div class="form">	
+								<div class="form-group">
+									<label class="col-lg-5" for="id_ID">CODIGO</label>
+									<div class="col-lg-3">
+										<input class="form-control" id="id_ID" name="tr_id"  type="text" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-lg-5" for="id_act_codigo">CODIGO</label>
+									<div class="col-lg-3">
+										<input class="form-control" id="id_act_codigo" name="tr_codigo"  type="text" />
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-lg-3 control-label" for="id_act_nombre">NOMBRE</label>
+									<div class="col-lg-10">
+										<input class="form-control" id="id_act_nombre" name="nombre"type="text" />
+									</div>
+								</div>		   
+								<div class="form-group">
+									<label class="col-lg-3 control-label" for="id_act_apellidoP">APELLIDO PATERNO</label>
+									<div class="col-lg-10">
+										<input class="form-control" id="id_act_apellidoP" name="tr_apellidoP" type="text" />
+									</div>
+								</div>   
+								<div class="form-group">
+									<label class="col-lg-3 control-label" for="id_act_pellidoM">APELLIDO MATERNO</label>
+									<div class="col-lg-10">
+										<input class="form-control" id="id_act_pellidoM" name="tr_apellidoM" />
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label class="col-lg-3 control-label" for="id_act_dni">DNI</label>
+											<div class="col-lg-8">
+												<input class="form-control" id="id_act_dni" name="tr_dni"  type="text"/>
+											</div>
+										</div>   
+									</div>
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label class="col-lg-3 control-label" for="id_act_telefono">TELEFONO</label>
+											<div class="col-lg-8">
+												<input class="form-control" id="id_act_telefono" name="tr_telefono"  type="tel"/>
+											</div>
+										</div> 
+									</div>
+								</div>   
+								
+								<div class="row">
+									<div class="col-6">
+										<div class="form-group">
+											<label class="col-lg-5" for="id_act_nro_licencia">NUMERO LICENCIA</label>
+											<div class="col-lg-12">
+												<input class="form-control" id="id_act_nro_licencia" name="tr_lic_numero"  type="text"/>	
+											</div>
+										</div>
+									</div>
+									<div class="col-3">
+										<div class="form-group">
+											<label for="id_act_clase_licencia">CLASE LICENCIA</label>
+											<div class="col-lg-12">
+												<input class="form-control" id="id_act_clase_licencia" name="tr_lic_clase" type="text"/>
+											</div>
+										</div>
+									</div>
+									<div class="col-3">
+										<div class="form-group">
+											<label  for="id_act_categoria_licencia">CATEGORIA LICENCIA</label>
+											<div class="col-lg-12">
+												<input class="form-control" id="id_act_categoria_licencia" name="tr_lic_categoria"  type="text" />
+											</div>
+										</div>
+									</div>
+								</div>
+							
+								<div class="row">
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label class="col-lg-6" for="id_act_fecha_expedicion">FECHA EXPEDICION</label>
+											<div class="col-lg-12">
+												<input class="form-control" id="id_act_fecha_expedicion" name="tr_lic_fecha_expedicion"  type="date"/>
+											</div>
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div class="form-group">
+											<label  for="id_act_fecharevalidacion">FECHA REVALIDACION</label>
+											<div class="col-lg-12">
+												<input class="form-control" id="id_act_fecharevalidacion" name="tr_lic_fecha_revalidacion"  type="date"/>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+							</div>						
+						</div>
+					</form>   		
+				</div>
+				<div class="modal-footer">
+					<div class="form-group">
+						<div class="col-lg-2">
+							<button type="button" class="btn btn-primary" id="id_btn_Actualizar">ACTUALIZAR</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<script src="js\control\Chofer.Control.js"></script>
+<script src="js\view\Chofer.View.js"></script>
+<script>
+	document.getElementById("btnRegistra").addEventListener("click", function (e) {
+   		e.preventDefault();
+   		$('#id_div_modal_registra').modal('show');
+		
+  	 });
+   $('#id_div_modal_registra').on('show.bs.modal',function (e) {
+	   var button = $(e.relatedTarget)
+   });
+   $('#id_div_modal_actualiza').on('show.bs.modal',function (e) {
+	   var button = $(e.relatedTarget)
+   });
+</script>
+
+
+	
+</body>
+<!-- </html>  -->
+
