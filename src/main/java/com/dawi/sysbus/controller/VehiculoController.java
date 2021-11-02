@@ -1,57 +1,100 @@
 package com.dawi.sysbus.controller;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
+import com.dawi.sysbus.models.Propietario;
 import com.dawi.sysbus.models.Vehiculo;
-import com.dawi.sysbus.repository.IVehiculoRepository;
-
+import com.dawi.sysbus.service.IPropietarioService;
+import com.dawi.sysbus.service.IVehiculoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 
 @Controller
 public class VehiculoController {
-	
+	@Autowired
+    private IVehiculoService vehiculoService;
     @Autowired
-    private IVehiculoRepository repoVehiculo;
-
-    @GetMapping("/vehiculo")
-    public String cargarTrabajador(Model model) {
-        model.addAttribute("vehiculo",new Vehiculo());
+    private IPropietarioService propietarioService;
+	
+    @RequestMapping("/vehiculo")
+    public String verVehiculo(){
         return "vehiculo";
     }
-    
-    @GetMapping("/listarV")
-    public String listadoTrabajador(@ModelAttribute Vehiculo v,Model model){
-        model.addAttribute("listaVehiculoss",repoVehiculo.findAll());
-        return "vehiculo.listar";
+    @RequestMapping("/listaPropietarios")
+    @ResponseBody
+    public List<Propietario> listaPropietarios(){
+        List<Propietario> lista = propietarioService.listaPropietario();         
+        return lista;
     }
 
-    @PostMapping("/editarV")
-    public String buscarVehiculo(@ModelAttribute Vehiculo v, Model model){
-        System.out.println(v);
-        model.addAttribute("vehiculo",repoVehiculo.findById(v.getVehiculo_codigo()));
-        return "vehiculo";
+    @RequestMapping("/consultaVehiculo")
+    @ResponseBody
+    public List<Vehiculo> consultaVehiculo(String filtro){
+        List<Vehiculo> lista = vehiculoService.listaChoferPorCodigolike("%"+filtro+"%");
+        return lista;
+    }
+    @RequestMapping("registrarVehiculo")
+    @ResponseBody
+    public Map<String,Object> registrarVehiculo(Vehiculo obj){
+        Map<String,Object> salida = new HashMap<String, Object>();
+        try {
+            Vehiculo objResultado = vehiculoService.insertarActualizaVehiculo(obj);
+            if(objResultado == null){
+                salida.put("mensaje","Error al registar");
+            }else{
+                List<Vehiculo> lista = vehiculoService.listaVehiculo();
+                salida.put("mensaje","Registro exitoso");
+                salida.put("data",lista);
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return salida;
+    }
+    @RequestMapping("actualizarVehiculo")
+    @ResponseBody
+    public Map<String, Object> actualizarVehiculo(Vehiculo obj){
+        Map<String, Object> salida = new HashMap<String, Object>();
+        try {
+            Vehiculo objResutado = vehiculoService.insertarActualizaVehiculo(obj);
+            if(objResutado == null){
+                salida.put("mensaje","Error al actualizar");
+            }else{
+                List<Vehiculo> lista = vehiculoService.listaVehiculo();
+                salida.put("mensaje","Actualizado correctamente");
+                salida.put("data",lista);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return salida;
+    }
+    @RequestMapping("/eliminarVehiculo")
+    @ResponseBody
+    public Map<String, Object> eliminarVehiculo(String id){
+        Map<String, Object> salida = new HashMap<String, Object>();
+        try {
+            Optional<Vehiculo> optVehiculo = vehiculoService.obtinePorId(Integer.parseInt(id));
+            if(optVehiculo.isEmpty()){
+                salida.put("mensaje","No existe el id");
+            }else{
+                vehiculoService.eliminarVehiculo(Integer.parseInt(id));
+                List<Vehiculo> lista = vehiculoService.listaVehiculo();
+                salida.put("lista",lista);
+                salida.put("mensaje","Elimninacion exitosa");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return salida;
     }
 
-	
-	@PostMapping("/grabarV")
-	public String grabarVehiculo(@ModelAttribute Vehiculo v,Model model) {
-		System.out.println(v);
-		repoVehiculo.save(v);
-		
-        model.addAttribute("listaVehiculoss",repoVehiculo.findAll());
-		return "vehiculo.listar";
-	}
-	
-    @PostMapping("/eliminarV")
-    public String eliminarVehiculo(@ModelAttribute Vehiculo vehiculo,Model model){
-       
-    	repoVehiculo.delete(vehiculo);
-        model.addAttribute("listaVehiculoss",repoVehiculo.findAll());
-        return "vehiculo.listar";
-    }
 
 }

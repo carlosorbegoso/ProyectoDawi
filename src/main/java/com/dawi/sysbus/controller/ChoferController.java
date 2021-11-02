@@ -73,7 +73,6 @@ public class ChoferController {
 		Map<String, Object> salida = new HashMap<String, Object>();
 		try {
 			Optional<Chofer> optChofer = choferService.obtinePorId(Integer.parseInt(id));
-				System.out.println(optChofer);
 			if(optChofer.isEmpty()){
 				salida.put("mensaje","No existe el id");
 			}else{

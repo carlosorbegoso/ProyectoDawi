@@ -33,13 +33,40 @@ create table if not exists empleado(
     car_id int,
     foreign key (car_id) references cargo(car_id)
 );
- create table if not exists vehiculos(
-	veh_codigo int primary key not null,
-	veh_placa char(8),
-	veh_marca varchar(15),
-	veh_modelo varchar(30),
-	veh_color varchar (10)
- );
+select * from propietario;
+CREATE TABLE propietario (
+  pr_id int primary key auto_increment not null,
+  pr_codigo varchar(10),
+  pr_nombre varchar(45),
+  pr_apellidoP varchar(45),
+  pr_apellidoM varchar(45),
+  pr_dni varchar(9),
+  pr_telefono varchar(25),
+  pr_correo varchar(45),
+  car_id int,
+  FOREIGN KEY (car_id) REFERENCES cargo (car_id)
+) ;
+CREATE TABLE vehiculos (
+  vehi_id int primary key auto_increment not null,
+  veh_codigo varchar(10),
+  veh_nro_placa varchar(10),
+  veh_nro_serie varchar(25),
+  veh_nro_vin varchar(25),
+  veh_nro_motor varchar(25),
+  veh_color varchar(10),
+  veh_marca varchar(45),
+  veh_modelo varchar(45),
+  vehi_placa_vigente varchar(10),
+  vehi_placa_anterior varchar(10),
+  vehi_estado varchar(25),
+  vehi_anotaciones varchar(45),
+  vehi_sede varchar(25),
+  pr_id int,
+ FOREIGN KEY (pr_id) REFERENCES propietario(pr_id)
+) 
+
+
+
 create table if not exists ruta(
 	rta_codigo int primary key not null,
     rta_nombre varchar(45),

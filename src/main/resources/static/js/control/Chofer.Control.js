@@ -34,6 +34,51 @@ function agregarGrilla(lista){
 			]                                     
 		});
 }
+
+$("#id_btn_registra").click(function(){
+	var validator = $('#id_form_registra').data('bootstrapValidator');
+	validator.validate();
+	
+	if (validator.isValid()) {
+		$.ajax({
+		  type: "POST",
+		  url: "registrarChofer", 
+		  data: $('#id_form_registra').serialize(),
+		  success: function(data){
+			  agregarGrilla(data.lista);
+			 
+			  $('#id_div_modal_registra').modal("hide");
+			  mostrarMensaje(data.mensaje);
+			  limpiarFormulario();
+			  validator.resetForm();
+		  },
+		  error: function(){
+			  mostrarMensaje(MSG_ERROR);
+		  }
+		});
+		
+	}
+});
+
+$("#id_btn_Actualizar").click(function(){
+	var validator = $('#id_form_actualiza').data('bootstrapValidator');
+	validator.validate();
+	if (validator.isValid()) {
+		$.ajax({
+		  type: "POST",
+		  url: "actualizarChofer", 
+		  data: $('#id_form_actualiza').serialize(),
+		  success: function(data){
+			  agregarGrilla(data.lista);
+			  $('#id_div_modal_actualiza').modal("hide");
+			  mostrarMensaje(data.mensaje);
+		  },
+		  error: function(){
+			  mostrarMensaje(MSG_ERROR);
+		  }
+		});
+	}
+});
 function eliminar(id){	
 	mostrarMensajeConfirmacion(MSG_ELIMINAR, accionEliminar,null,id);
 }
@@ -81,47 +126,3 @@ function limpiarFormulario(){
 	$('#id_act_fecha_expedicion').val("");
 	$('#id_act_fecharevalidacion').val("");
 }
-$("#id_btn_registra").click(function(){
-	var validator = $('#id_form_registra').data('bootstrapValidator');
-	validator.validate();
-	
-	if (validator.isValid()) {
-		$.ajax({
-		  type: "POST",
-		  url: "registrarChofer", 
-		  data: $('#id_form_registra').serialize(),
-		  success: function(data){
-			  agregarGrilla(data.lista);
-			 
-			  $('#id_div_modal_registra').modal("hide");
-			  mostrarMensaje(data.mensaje);
-			  limpiarFormulario();
-			  validator.resetForm();
-		  },
-		  error: function(){
-			  mostrarMensaje(MSG_ERROR);
-		  }
-		});
-		
-	}
-});
-
-$("#id_btn_Actualizar").click(function(){
-	var validator = $('#id_form_actualiza').data('bootstrapValidator');
-	validator.validate();
-	if (validator.isValid()) {
-		$.ajax({
-		  type: "POST",
-		  url: "actualizarChofer", 
-		  data: $('#id_form_actualiza').serialize(),
-		  success: function(data){
-			  agregarGrilla(data.lista);
-			  $('#id_div_modal_actualiza').modal("hide");
-			  mostrarMensaje(data.mensaje);
-		  },
-		  error: function(){
-			  mostrarMensaje(MSG_ERROR);
-		  }
-		});
-	}
-});
