@@ -65,6 +65,23 @@ CREATE TABLE vehiculos (
  FOREIGN KEY (pr_id) REFERENCES propietario(pr_id)
 ) 
 
+create table if not exists viaje(
+vj_id int primary key not null auto_increment,
+vj_fecha date,
+vj_hora_inicial time,
+vj_hora_final time,
+vj_hora_total time,
+vj_hora_frecuencia time,
+vj_ruta char(5),
+vj_lado char(2),
+vj_nro_viaje int,
+id_conductor int,
+id_vehiculo int,
+foreign key (id_conductor) references conductor(tr_id),
+foreign key (id_vehiculo) references vehiculo(vehi_id)
+);
+
+
 
 
 create table if not exists ruta(

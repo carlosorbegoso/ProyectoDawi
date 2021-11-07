@@ -32,6 +32,12 @@ public class VehiculoController {
         List<Propietario> lista = propietarioService.listaPropietario();         
         return lista;
     }
+    @RequestMapping("/listaVehiculos")
+    @ResponseBody
+    public List<Vehiculo> listaVehiculos(){
+        List<Vehiculo> lista = vehiculoService.listaVehiculo(); 
+        return lista;
+    }
 
     @RequestMapping("/consultaVehiculo")
     @ResponseBody
@@ -58,6 +64,7 @@ public class VehiculoController {
         }
         return salida;
     }
+   
     @RequestMapping("actualizarVehiculo")
     @ResponseBody
     public Map<String, Object> actualizarVehiculo(Vehiculo obj){
@@ -76,6 +83,7 @@ public class VehiculoController {
         }
         return salida;
     }
+  
     @RequestMapping("/eliminarVehiculo")
     @ResponseBody
     public Map<String, Object> eliminarVehiculo(String id){
