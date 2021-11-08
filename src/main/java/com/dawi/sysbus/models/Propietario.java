@@ -18,6 +18,7 @@ import lombok.Data;
 @Table(name = "propietario")
 
 public class Propietario {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int pr_id;
