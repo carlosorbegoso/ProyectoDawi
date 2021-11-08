@@ -1,5 +1,6 @@
 var VehiculoItem = {};
 $( function() {
+	
 	var listaConductor= [];
 	var fil = document.getElementById('txtConductor').value;
 	$.getJSON("consultarChofer", {"filtro":fil}, function (lista) {

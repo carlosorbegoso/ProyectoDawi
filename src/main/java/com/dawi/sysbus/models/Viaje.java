@@ -25,8 +25,8 @@ public class Viaje {
     private String vj_ruta;
     private String vj_lado;
     private int vj_nro_viaje;
-    private String id_conductor;
-    private String id_vehiculo;
+    private int id_conductor;
+    private int id_vehiculo;
     
     
 }

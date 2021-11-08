@@ -1,3 +1,4 @@
+
 $.getJSON("listaPropietarios", {}, function (data) {
 	$.each(data, function (i, item) {
 		$("#id_reg_propietario").append("<option value=" + item.pr_id + ">" + item.pr_nombre + " " + item.pr_apellidoP + " " + item.pr_apellidoM + "</option>");

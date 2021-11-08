@@ -32,12 +32,14 @@ public class DespachoController {
 	public String verDespacho(){
 		return "despacho";
 	}
+
 	@RequestMapping("/listarViajes")
 	@ResponseBody
 	public List<Viaje> listarViajes(){
 		List<Viaje> lista = despachoService.listaViaje();
 		return lista;
 	}
+
 	@RequestMapping("/registrarViaje")
 	public Map<String,Object> registrarViaje(Viaje obj){
 		Map<String,Object> salida = new HashMap<String,Object>();
@@ -55,6 +57,7 @@ public class DespachoController {
 		}
 		return salida;
 	}
+
 	@RequestMapping("/ActualizarViaje")
 	public Map<String,Object> AcutualizaViaje(Viaje obj){
 		Map<String,Object> salida = new HashMap<String,Object>();
@@ -72,6 +75,7 @@ public class DespachoController {
 		}
 		return salida;
 	}
+	
 	@RequestMapping("/eliminarViaje")
 	@ResponseBody
 	public Map<String,Object> eliminarViaje(String id) {

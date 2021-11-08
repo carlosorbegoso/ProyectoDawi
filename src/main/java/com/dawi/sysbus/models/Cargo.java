@@ -5,7 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
 import lombok.Data;
 
 @Entity
@@ -19,3 +18,4 @@ public class Cargo {
     private String nombre;
     private String detalle;
 }
+
