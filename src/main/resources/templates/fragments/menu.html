@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="css/menu.css">
     
@@ -26,14 +27,21 @@
                 <b style="color:black;">Tech</b>
             </a>
                
-              <form class="d-flex">
+              <div class="d-flex">
                 <h5 class="my-0 mr-md-auto font-weight-normal d-none d-sm-inline">SISTEMA DE CONTROL DE UNIDADES </h5>
-              </form>
-              <form class="d-flex">
-                <nav class="my-2 my-md-0 mr-md-3">
-                    <a class="text-dark d-sm-inline" data-bs-toggle="offcanvas" href="#offcanvasMenu" role="button" id="BarraInicio">MENU</a>
+              </div>
+              
+              <div class="d-flex">
+                <nav class="my-1 my-md-0 mr-md-1">
+                    <form method="POST" th:action="@{/logout}">
+                        <a href="#" onclick="this.parentNode.submit();">Logout</a>
+                    </form>
+                    <!-- <a class="text-dark d-sm-inline" href="/logout" role="button"  id="logout">LOGOUT</a> -->
                 </nav>
-              </form>
+                <nav class="my-2 my-md-0 mr-md-3">
+                    <a class="text-dark d-sm-inline p-3" data-bs-toggle="offcanvas" href="#offcanvasMenu" role="button" id="BarraInicio">MENU</a>
+                </nav>
+            </div>
         </div>
     
     </div>

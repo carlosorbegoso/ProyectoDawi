@@ -12,9 +12,11 @@ import com.dawi.sysbus.service.IDespachoService;
 import com.dawi.sysbus.service.IVehiculoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+// import org.springframework.security.core.annotation.AuthenticationPrincipal;
+// import org.springframework.security.core.userdetails.User;
+// import org.springframework.security.core.annotation.AuthenticationPrincipal;
+// import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -29,8 +31,10 @@ public class DespachoController {
 	IDespachoService despachoService;
 
 	@RequestMapping("/despachar")
-	public String verDespacho(){
-		return "despacho";
+	public String verDespacho(/*@AuthenticationPrincipal User user */){
+		System.out.println("ejecutando el controlador Spring MVC");
+		System.out.println("usuario que hizo login:" /*+ user*/);
+		return "index";
 	}
 
 	@RequestMapping("/listarViajes")
