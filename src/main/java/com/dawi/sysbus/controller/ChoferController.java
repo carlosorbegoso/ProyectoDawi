@@ -4,11 +4,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.dawi.sysbus.models.Chofer;
 import com.dawi.sysbus.service.IChoferService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -90,7 +95,23 @@ public class ChoferController {
 	}
 
 
-		
+	@GetMapping("/loginform")
+	public String login() {
+		return "login";
+	}
+	
+	@PostMapping("/loginform_")
+	public String login_2(HttpServletRequest request, Model model) {		
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		if(username.equals("admin") && password.equals("admin")) {
+			return "index";
+		}
+		else {
+			model.addAttribute("mensaje", "Tus accesos no son válidos");
+			return "login";
+		}
+	}
 
 	
 }
