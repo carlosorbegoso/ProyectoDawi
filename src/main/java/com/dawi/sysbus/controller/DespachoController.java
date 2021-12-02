@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 // import org.springframework.security.core.annotation.AuthenticationPrincipal;
 // import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -37,7 +38,7 @@ public class DespachoController {
 		return "index";
 	}
 
-	@RequestMapping("/listarViajes")
+	@RequestMapping("/listaViajes")
 	@ResponseBody
 	public List<Viaje> listarViajes(){
 		List<Viaje> lista = despachoService.listaViaje();
@@ -45,8 +46,10 @@ public class DespachoController {
 	}
 
 	@RequestMapping("/registrarViaje")
+	@ResponseBody
 	public Map<String,Object> registrarViaje(Viaje obj){
 		Map<String,Object> salida = new HashMap<String,Object>();
+		System.out.println(salida);
 		try {
 			Viaje objResultado = despachoService.insertarActualizaViaje(obj);
 			if(objResultado == null){
@@ -102,6 +105,7 @@ public class DespachoController {
 		
 		return salida;
 	}
+
 
 	
 

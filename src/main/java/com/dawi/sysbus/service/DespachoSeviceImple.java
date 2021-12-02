@@ -7,11 +7,11 @@ import com.dawi.sysbus.models.Viaje;
 import com.dawi.sysbus.repository.IDespachoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 @Service
 public class DespachoSeviceImple implements IDespachoService{
     @Autowired
      IDespachoRepository repository;
+
 
     @Override
     public List<Viaje> listaViaje() {
