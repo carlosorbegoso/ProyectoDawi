@@ -1,22 +1,39 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" 
     xmlns:th="http://www.thymeleaf.org">
-    <head>
+    <head>    	
         <title>Login</title>
         <meta charset="UTF-8"/>
-    </head>
+        <link href="css/login.css" rel="stylesheet" type="text/css">
+    </head>    
     <body>
-        <h1>Login</h1>
         
-        <form method="POST" th:action="@{/login}">
-            <label for="username">Username:</label>
-            <input type="text" name="username" id="username"/>
-            <br/>
-            <label for="password">Password:</label>
-            <input type="password" name="password" id="password"/>
-            <br/>
-            <input type="submit" value="Login"/>
-        </form>
+        <form method="POST" th:action="@{/loginform_}">
+        <div class="login-wrap">
+            <div class="login-html">
+                <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+                <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab"></label>
+                <div class="login-form">
+                    <div class="sign-in-htm">
+                        <div class="group">
+                            <label for="user" class="label">Username</label>
+                            <input id="user" type="text" class="input" name="username">
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Password</label>
+                            <input id="pass" type="password" class="input" data-type="password" name="password">
+                        </div>
+                        <br />
+                        <div class="group">
+                            <input type="submit" class="button" value="Sign In">
+                        </div>
+                        <div class="hr"></div>
+                        <div th:text="${mensaje}" style="color: white; padding: 4px 2px 4px 2px; text-align: center; background: #9D4E3F; border-radius: 10px;"></div>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </form>
         
     </body>
 </html>
