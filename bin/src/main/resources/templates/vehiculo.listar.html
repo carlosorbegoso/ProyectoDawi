@@ -20,7 +20,7 @@
                 </label>
                 <div class="btn-group btn-group-sm">
                     <button (click)="Nuevo()" class="btn btn-outline-primary border-secondary ml-1 text-dark btn-action" data-action="nuevo" id="btnNuevoUsuario" title="Nuevo">
-                        <span class="fa fa-fw fa-file"></span>
+                        <a href="/vehiculo" class="fa fa-fw fa-file"></a>
                     </button>
                     <button   class="btn btn-outline-primary  border-secondary ml-1 text-dark btn-action" data-action="buscar" id="btnDocBuscar" title="Buscar">
                         <span class="fa fa-fw fa-search"></span>
@@ -48,7 +48,7 @@
             <div class="card-body p-2 overflow-auto" style="height: 75vh;">
                 <!-- DIBUJAR LISTA  -->
                 <ng-template [ngIf]="desktop" [ngIfElse]="mobile">
-                    <table class="table table-sm">
+                    <table class="table table-sm" id="myTable">
                         <thead>
                             <tr>
                                 <th >#</th>
@@ -60,26 +60,32 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor=" let vehiculo of vehiculos, let indice=index" class="text-center">
-                                <th scope="row">{{indice+1}}</th>
-                                <td>{{ vehiculo.vehiculo_codigo }}</td>	
-                                <td>{{ vehiculo.vehiculo_marca }}</td>
-                                <td>{{ vehiculo.vehiculo_modelo }}</td>
-                                <td>{{ vehiculo.vehiculo_placa }}</td>
-                                <td>
-                                    <input class="form-control"value="{{ vehiculo.vehiculo_color}}"type="color" disabled>
-                                </td>
-                                <td>
-                                    <button (click)="Editar(vehiculo)" class="btn btn-sm btn-danger "> <i class="fas fa-fw fa-pencil-alt"></i></button>
-                                    <button (click)="Delete(vehiculo)" class="btn btn-sm btn-warning ms-1"> <i class="far fa-times-circle"></i></button>
-                                
-                                </td>
-                            </tr>
+						<tr th:each="V :${listaVehiculoss}" class="text-center">
+							<!-- <th scope="row">{{indice+1}}</th> -->
+							<td></td>	
+                            
+							<td th:text="${V.Vehiculo_codigo}"> </td>	
+							<td th:text="${V.Vehiculo_marca}"> </td>
+							<td th:text="${V.Vehiculo_modelo}"> </td>
+							<td th:text="${V.Vehiculo_placa}"> </td>
+							<td th:text="${V.Vehiculo_color}"> </td>
+
+							<td>
+                                <form th:action="@{/editarV}" method="post">
+                                    <input type="hidden" name="Vehiculo_codigo" th:value="${V.Vehiculo_codigo}">
+								    <button  type="submit" class="btn btn-sm btn-success "> <i class="fas fa-fw fa-pencil-alt"></i></button>
+                                </form>
+                                <form th:action="@{/eliminarV}" method="post">
+                                    <input type="hidden" name="Vehiculo_codigo" th:value="${V.Vehiculo_codigo}">
+								    <button  type="submit" class="btn btn-sm btn-danger "> <i class="far fa-times-circle"></i></button>
+                                </form>
+							</td>
+						</tr>
                         </tbody>
                     </table>
                 
                 </ng-template>
-                  
+<!--  
                 <ng-template  #mobile>
                     <div class="list-group list-group-flush">
                         <div *ngFor=" let vehiculo of vehiculos" class="text-center">
@@ -117,7 +123,7 @@
                         </div>
                     </div>
                   </ng-template>
-        
+-->
             </div>
             <div class="card-footer ">
                 <form action="javascript:void();">
@@ -135,3 +141,9 @@
         </div>
     </div>
 </span>
+
+<script >
+    $(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>

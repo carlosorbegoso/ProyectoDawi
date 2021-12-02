@@ -1,140 +1,376 @@
+<html xmlns:th="http://www.thymeleaf.org">
 <div th:replace="/fragments/menu :: navbar"></div>
-<div class="container mb-2 p-1 " style="border-radius: 5px; margin-top: 52px;" >
-    <div class="card ">
-        <div class="car-body ">
-            <div class="input-group input-group-sm ">
-                <button class="btn  mr-1 " type="button">
-                    <i class="fas fa-fw fa-list"></i>
-                </button>
-                <label class="form-control ">
-                    <a href="javascript:void(0);"><i class="fa fa-fw fa-home"></i> </a>
-                    <span class="d-none d-sm-inline">
-                        CONTROL /
-                    </span>
-                
-                    <span class="" id="lblTitulo">	VEHICULO</span>
-                    <span style="float:right;line-height:20px;">
-                        <span  class="fa fa-fw fa-globe hidden-xs "></span>
-                    </span>
-                </label>
-                <div class="btn-group btn-group-sm">
-                    <button (click)="Nuevo()" class="btn btn-outline-primary border-secondary ml-1 text-dark btn-action" data-action="nuevo" id="btnNuevoUsuario" title="Nuevo">
-                        <span class="fa fa-fw fa-file"></span>
-                    </button>
-                    <button (click)="Listar()"  class="btn btn-outline-primary  border-secondary ml-1 text-dark btn-action" data-action="buscar" id="btnDocBuscar" title="Buscar">
-                        <span class="fa fa-fw fa-search"></span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- VEHICULO FORMULARIO -->
-<span class="nsPanel" id="cardVehiculosForm" >
-    <div class="container-sm p-1">
-        <div class="card" >
-            <div class="card-header p-1">
-                <div class="input-group input-group-sm">
-                    <button class="btn btn-outline-secondary border-white  " type="button" title="" disabled>
-                        <span class="fas fa-fw fa-user-alt fa-lg"></span>
-                    </button>
-                    <label class="form-control ">FORMULARIO</label>
-                    <button  (click)="Guardar(modelVehiculo)"  class="btn btn-outline-primary border-secondary ml-1 text-dark btn-action" id="btnVehiculoGuardar" data-action="vehiculo.guardar" type="button" title="Guardar">
-                        <i class="fa fa-fw fa-save"></i>
-                    </button>
-                </div>
-            </div>
-        
-            <div class="card-body p-2" style="height: 75vh;" >
-                <div class="" style="overflow-y: auto;">
-                    <div class="" id="divUsuarioFormContenido">
-                        
-                        <form id="frmTrabajador" class="form ">
-                            <div class="container">
-                                <!-- Datos vehiculo -->
-                                <h6>DATOS VEHICULO</h6>
-                                <hr class=" dropdown-divider">
-                                <div class="row mt-2">
-                                    <div class="col-lg-2">
-                                        <div class="form-group input-group-sm">
-                                            <label >CODIGO</label>
-                                            <input  [(ngModel)]="modelVehiculo.vehiculo_codigo" class="form-control" name="vehiculo_codigo" type="number">
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="form-group input-group-sm">
-                                            <label> PLACA:</label>
-                                            <input [(ngModel)]="modelVehiculo.vehiculo_placa" class="form-control" name="vehiculo_placa" type="text">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <label for="cboVehiculoMarca" > MARCA:</label>
-                                        <div class="input-group input-group-sm">
-                                            <input [(ngModel)]="modelVehiculo.vehiculo_marca" class="form-control" name="vehiculo_marca"type="text" >
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="form-group input-group-sm">
-                                            <label> MODELO:</label>
-                                            <input [(ngModel)]="modelVehiculo.vehiculo_modelo" class="form-control" name="vehiculo_modelo" >
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row mt-2">
-                                    <div class="col-lg-4">
-                                        <div class="form-group input-group-sm">
-                                            <label> COLOR: </label>
-                                            <input [(ngModel)]="modelVehiculo.vehiculo_color"  class="form-control" type="color" name="vehiculo_color">
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                
-                        </form>
 
-                    </div>
-                </div>
-            </div>
-            <div class="card-footer ">
-                <form action="javascript:void();">
-                    <div class="input-group input-group-sm mt-2">
-                        <button class="btn btn-outline-light border" type="button">
-                            <i class="fas fa-fw fa-angle-double-left"></i>
-                        </button>
-                            <label class="form-control"></label>
-                        <button class="btn btn-outline-light border" type="button">
-                            <i class="fas fa-fw fa-angle-double-right"></i>
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</span>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<!-- <script type="text/javascript" src="js/jquery.min.js"></script> -->
+	<title>buses </title>
+</head>
 
-    <!-- USUARIO BUSCAR FILTRO -->
-<div class="modal fade" id="dlgVehiculosBuscarFiltro" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-scrollable">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h6 class="modal-title" id="dlgUsuarioBuscarFiltroLabel">USUARIO / BUSCAR / FILTRO</h6>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <!--
-                    AQUI CODIGO ...
-                -->
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">CANCELAR</button>
-                <button type="button" class="btn btn-sm btn-primary">ACEPTAR</button>
-            </div>
-        </div>
-    </div>
-</div>
+<body>
+
+	<div class="container">
+		<h3>VEHICULOS</h3>
+		<div class="col-md-23">
+			<div class="row" style="height: 70px">
+				<div class="col-md-2">
+					<input class="form-control" id="id_txt_filtro" name="filtro" placeholder="Ingrese el nombre"
+						type="text" />
+				</div>
+				<div class="col-md-2">
+					<button type="button" class="btn btn-primary" id="id_btn_filtrar"
+						style="width: 150px">FILTRA</button>
+				</div>
+				<div class="col-md-2">
+					<button type="button" data-toggle='modal' id="btnRegistra" data-target="#id_div_modal_registra"
+						class='btn btn-success' style="width: 150px">REGISTRA</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="content">
+						<table id="id_table" class="table table-striped table-bordered">
+							<thead>
+								<tr>
+									<th style="width: 5%">ID</th>
+									<th style="width: 15%">CODIGO</th>
+									<th style="width: 8%">PLACA</th>
+									<th style="width: 30%">SERIE</th>
+									<th style="width: 30%">MOTOR</th>
+									<th style="width: 8%">COLOR</th>
+									<th style="width: 8%">MARCA</th>
+									<th style="width: 10%">MODELO</th>
+									<th style="width: 10%">PROPIETARIO</th>
+									<th style="width: 10%">actualiza</th>
+									<th style="width: 10%">Elimina</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- registar -->
+		<div class="modal fade" id="id_div_modal_registra">
+			<div class="modal-dialog  modal-xl">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="panel-title">Datos vehiculo</h4>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<form id="id_form_registra" action="registraActualizaCrudVehiculo" method="post">
+							<div class="container">
+								<div class="form">
+									<div class="form-group">
+										<label class="col-lg-5" for="id_reg_codigo">CODIGO</label>
+										<div class="col-lg-3">
+											<input class="form-control" id="id_reg_codigo" name="codigo" type="text" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-lg-3 control-label" for="id_reg_placa">NRO PLACA</label>
+										<div class="col-lg-10">
+											<input class="form-control" id="id_reg_placa" name="veh_nro_placa"
+												type="text" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-lg-3 control-label" for="id_reg_serie">NRO SERIE</label>
+										<div class="col-lg-10">
+											<input class="form-control" id="id_reg_serie" name="veh_nro_serie"
+												type="text" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-lg-3 control-label" for="id_reg_nrovin">NRO VIN</label>
+										<div class="col-lg-10">
+											<input class="form-control" id="id_reg_nrovin" name="veh_nro_vin" />
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label class="col-lg-3 control-label" for="id_reg_motor">NRO MOTOR</label>
+												<div class="col-lg-8">
+													<input class="form-control" id="id_reg_motor" name="veh_nro_motor"
+														type="text" />
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label class="col-lg-3 control-label"
+													for="id_reg_color">COLOR</label>
+												<div class="col-lg-8">
+													<input class="form-control" id="id_reg_color" name="veh_color"
+														type="text" />
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-6">
+											<div class="form-group">
+												<label class="col-lg-5" for="id_reg_nro_marca">MARCA</label>
+												<div class="col-lg-12">
+													<input class="form-control" id="id_reg_nro_marca"
+														name="veh_marca" type="text" />
+												</div>
+											</div>
+										</div>
+										<div class="col-3">
+											<div class="form-group">
+												<label for="id_reg_modelo">MODELO</label>
+												<div class="col-lg-12">
+													<input class="form-control" id="id_reg_modelo"
+														name="veh_modelo" type="text" />
+												</div>
+											</div>
+										</div>
+										<div class="col-3">
+											<div class="form-group">
+												<label for="id_reg_placa_vigente">PLACA VIGENTE</label>
+												<div class="col-lg-12">
+													<input class="form-control" id="id_reg_placa_vigente"
+														name="vehi_placa_vigente" type="text" />
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label class="col-lg-6" for="id_reg_placa_anterior">PLACA ANTERIOR</label>
+												<div class="col-lg-12">
+													<input class="form-control" id="id_reg_placa_anterior"
+														name="vehi_placa_anterior" type="text" />
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="id_reg_estado">ESTADO</label>
+												<div class="col-lg-12">
+													<input class="form-control" id="id_reg_estado"
+														name="vehi_estado" type="text" />
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="id_reg_anotaciones">ANOTACIONES</label>
+										<div class="col-lg-12">
+											<input class="form-control" id="id_reg_anotaciones" name="vehi_anotaciones"
+												type="text" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="id_reg_sede">SEDE</label>
+										<div class="col-lg-12">
+											<input class="form-control" id="id_reg_sede" name="vehi_sede" type="text" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="id_reg_propiedario">PROPIETARIO</label>
+										<div class="col-lg-12">
+											<select id="id_reg_propietario" name="propietario" class='form-control'>
+												<option value=" ">[Seleccione]</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<div class="form-group">
+							<div class="col-lg-2">
+								<button type="button" class="btn btn-primary" id="id_btn_registra">REGISTRAR</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- actualizar -->
+		<div class="modal fade" id="id_div_modal_actualiza">
+			<div class="modal-dialog modal-lg">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="panel-title">Datos vehiculo</h4>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<form id="id_form_actualiza" action="registraActualizaCrudVehiculo" method="post">
+							<div class="container">
+								<div class="form">
+									<div class="form-group">
+										<label class="col-lg-5" for="id_ID">ID</label>
+										<div class="col-lg-3">
+											<input class="form-control" id="id_ID" name="vehi_id" type="text" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-lg-5" for="id_act_codigo">CODIGO</label>
+										<div class="col-lg-3">
+											<input class="form-control" id="id_act_codigo" name="codigo" type="text" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-lg-3 control-label" for="id_act_placa">NRO PLACA</label>
+										<div class="col-lg-10">
+											<input class="form-control" id="id_act_placa" name="veh_nro_placa"
+												type="text" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-lg-3 control-label" for="id_act_serie">NRO SERIE</label>
+										<div class="col-lg-10">
+											<input class="form-control" id="id_act_serie" name="veh_nro_serie"
+												type="text" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-lg-3 control-label" for="id_act_nrovin">NRO VIN</label>
+										<div class="col-lg-10">
+											<input class="form-control" id="id_act_nrovin" name="veh_nro_vin" />
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label class="col-lg-3 control-label" for="id_act_motor">NRO MOTOR</label>
+												<div class="col-lg-8">
+													<input class="form-control" id="id_act_motor" name="veh_nro_motor"
+														type="text" />
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label class="col-lg-3 control-label"
+													for="id_act_color">COLOR</label>
+												<div class="col-lg-8">
+													<input class="form-control" id="id_act_color" name="veh_color" type="text" />
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-6">
+											<div class="form-group">
+												<label class="col-lg-5" for="id_act_marca">MARCA</label>
+												<div class="col-lg-12">
+													<input class="form-control" id="id_act_marca"
+														name="veh_marca" type="text" />
+												</div>
+											</div>
+										</div>
+										<div class="col-3">
+											<div class="form-group">
+												<label for="id_act_modelo">MODELO</label>
+												<div class="col-lg-12">
+													<input class="form-control" id="id_act_modelo"
+														name="veh_modelo" type="text" />
+												</div>
+											</div>
+										</div>
+										<div class="col-3">
+											<div class="form-group">
+												<label for="id_act_placa_vigente">PLACA VIGENTE</label>
+												<div class="col-lg-12">
+													<input class="form-control" id="id_act_placa_vigente"
+														name="vehi_placa_vigente" type="text" />
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label class="col-lg-6" for="id_act_placa_anterior">PLACA
+													ANTERIOR</label>
+												<div class="col-lg-12">
+													<input class="form-control" id="id_act_placa_anterior"
+														name="vehi_placa_anterior" type="text" />
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="form-group">
+												<label for="id_act_estado">ESTADO</label>
+												<div class="col-lg-12">
+													<input class="form-control" id="id_act_estado"
+														name="vehi_estado" type="text" />
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="id_act_anotaciones">ANOTACIONES</label>
+										<div class="col-lg-12">
+											<input class="form-control" id="id_act_anotaciones" name="vehi_anotaciones"
+												type="text" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="id_act_sede">SEDE</label>
+										<div class="col-lg-12">
+											<input class="form-control" id="id_act_sede" name="vehi_sede" type="text" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="id_act_propietario">PROPIETARIO</label>
+										<div class="col-lg-12">
+											<select id="id_act_propietario" name="propietario" class='form-control'>
+												<option value=" ">[Seleccione]</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<div class="form-group">
+							<div class="col-lg-2">
+								<button type="button" class="btn btn-primary" id="id_btn_Actualizar">ACTUALIZAR</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<script src="js\control\Vehiculo.Control.js"></script>
+	<script src="js\view\Vehiculo.View.js"></script>
+	<script>
+		document.getElementById("btnRegistra").addEventListener("click", function (e) {
+			e.preventDefault();
+			$('#id_div_modal_registra').modal('show');
+
+		});
+		$('#id_div_modal_registra').on('show.bs.modal', function (e) {
+			var button = $(e.relatedTarget)
+		});
+		$('#id_div_modal_actualiza').on('show.bs.modal', function (e) {
+			var button = $(e.relatedTarget)
+		});
+	</script>
+
+
+
+</body>
+<!-- </html>  -->

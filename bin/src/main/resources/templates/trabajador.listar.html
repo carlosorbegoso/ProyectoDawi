@@ -19,12 +19,12 @@
 					</span>
 				</label>
 				<div class="btn-group btn-group-sm">
-					<button (click)="Nuevo()" class="btn btn-outline-primary border-secondary ml-1 text-dark btn-action" data-action="nuevo" id="btnNuevoUsuario" title="Nuevo">
+					<a href="/trabajador" class="btn btn-outline-primary border-secondary ml-1 text-dark btn-action" data-action="nuevo" id="btnNuevoUsuario" title="Nuevo">
 						<span class="fa fa-fw fa-file"></span>
-					</button>
-					<button   class="btn btn-outline-primary  border-secondary ml-1 text-dark btn-action" data-action="buscar" id="btnDocBuscar" title="Buscar">
+					</a>
+					<a  href="/Tlistar"  class="btn btn-outline-primary  border-secondary ml-1 text-dark btn-action" data-action="buscar" id="btnDocBuscar" title="Buscar">
 						<span class="fa fa-fw fa-search"></span>
-					</button>
+					</a>
 				</div>
 			</div>
 		</div>
@@ -63,25 +63,27 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="V :${listaVehiculos}" class="text-center">
+						<tr th:each="V :${listaTrabajador}" class="text-center">
 							<!-- <th scope="row">{{indice+1}}</th> -->
 							<td > <img th:src="@{${'/img/trabajador/'+V.trabajador_codigo+'.png'}}" alt="imagen" width="50px" height="50px"></td>	
                             
-							<td th:text="${V.trabajador_codigo}"> </td>	
-							<td th:text="${V.trabajador_nombre}"> </td>
-							<td th:text="${V.trabajador_apellidos}"> </td>
-							<td th:text="${V.trabajador_dni}"> </td>
-							<td th:text="${V.trabajador_cargo}"> </td>
-							<td th:text="${V.trabajador_telefono}"> </td>
+							<td th:text="${V.Trabajador_codigo}"> </td>	
+							<td th:text="${V.Trabajador_nombre}"> </td>
+							<td th:text="${V.Trabajador_apellidos}"> </td>
+							<td th:text="${V.Trabajador_dni}"> </td>
+							<td th:text="${V.Trabajador_cargo}"> </td>
+							<td th:text="${V.Trabajador_telefono}"> </td>
 
 							<td>
-                                <form action="@{/editar}" method="post">
-                                    <input type="hidden" name="trabajador_codigo" th:value="${V.trabajador_codigo}">
-								    <button  type="submit" class="btn btn-sm btn-danger "> <i class="fas fa-fw fa-pencil-alt"></i></button>
+                                <form th:action="@{/Teditar}" method="post">
+                                    <input type="hidden" name="Trabajador_codigo" th:value="${V.Trabajador_codigo}">
+								    <button  type="submit" class="btn btn-sm btn-warning "> <i class="fas fa-fw fa-pencil-alt"></i></button>
                                 </form>
-                                <form action="@{/eliminar}" method="post">
+							</td>
+							<td>
+                                <form th:action="@{/Teliminar}" method="post">
                                     <input type="hidden" name="trabajador_codigo" th:value="${V.trabajador_codigo}">
-								    <button  type="submit" class="btn btn-sm btn-danger "> <i class="fas fa-fw fa-pencil-alt"></i></button>
+								    <button  type="submit" class="btn btn-sm btn-danger "> <i class="far fa-times-circle"></i></button>
                                 </form>
 							</td>
 						</tr>
@@ -105,9 +107,9 @@
 	</div>
 </span>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
-
+<!-- 
 <script >
     $(document).ready( function () {
     $('#myTable').DataTable();
 } );
-</script>
+</script> -->
