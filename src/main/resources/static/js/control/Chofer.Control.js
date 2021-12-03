@@ -1,9 +1,14 @@
+var vehiculos = {}
 $("#id_btn_filtrar").click(function(){
 	var fil=$("#id_txt_filtro").val();
 	$.getJSON("consultarChofer",{"filtro":fil}, function (lista){
 		agregarGrilla(lista);
+		vehiculos = lista;
+		
 	});
 });
+console.log(vehiculos);
+agregarGrilla(vehiculos);
 function agregarGrilla(lista){
 	 $('#id_table').DataTable().clear();
 	 $('#id_table').DataTable().destroy();
