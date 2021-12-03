@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.Data;
+
 @Data
 @Entity
 @Table(name = "viaje")
@@ -17,6 +18,7 @@ public class Viaje {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int vj_id;
+    // @Column(name = "vj_fecha")
     private Date vj_fecha;
     private String vj_hora_inicial;
     // private Time vj_hora_final;
@@ -28,6 +30,4 @@ public class Viaje {
     private int id_conductor;
     private int id_vehiculo;
 
-	
-    
 }
