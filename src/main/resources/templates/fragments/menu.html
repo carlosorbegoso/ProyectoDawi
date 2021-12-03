@@ -34,8 +34,8 @@
               
               <div class="d-flex">
                 <nav class="my-1 my-md-0 mr-md-1">
-                    <form method="POST" th:action="@{/logout}">
-                        <a href="#" onclick="this.parentNode.submit();">Logout</a>
+                    <form method="POST" th:action="@{/login}">
+                        <a href="/login" onclick="this.parentNode.submit();">Logout</a>
                     </form>
                     <!-- <a class="text-dark d-sm-inline" href="/logout" role="button"  id="logout">LOGOUT</a> -->
                 </nav>
@@ -74,33 +74,33 @@
                    <i class="fas fa-fw fa-user-cog"></i>  MANTENIMIETO
                   </a>
                   <ul class="dropdown-menu border-light container" >
-                    <li >
+                    <!-- <li >
                         <a class="dropdown mb-1 sky-item" href="#">
                          <i class="fa fa-fw fa-users-gear"></i> USUARIOS</a>
-                    </li>
+                    </li> -->
                     <li>
                         <a class="dropdown mb-1 sky-item" href="/chofer">
                             <i class="fas fa-fw fa-cars"></i>
                                 CHOFERES
                         </a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a class="dropdown mb-1 sky-item" href="/trabajador">
                             <i class="fas fa-fw fa-cars"></i>
                             TRABAJADORES
                         </a>
-                    </li>
+                    </li> -->
                     <li>
                         <a class="dropdown mb-1 sky-item" href="/vehiculo">
                             <i class="fas fa-fw fa-cars"></i>
                             VEHICULOS
                         </a>
                     </li>
-                       <li>
+                       <!-- <li>
                         <a class="dropdown mb-1 sky-item" href="#">
                             <i class="fa fa-fw fa-locale"></i>
                             RUTAS VEHICULARES</a> 
-                    </li>
+                        </li> -->
                   </ul>
             </div>
             
