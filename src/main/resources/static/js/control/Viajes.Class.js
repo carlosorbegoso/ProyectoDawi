@@ -14,7 +14,7 @@ class Viajes {
 	}
 	set(params){
 		// this.vj_id              = params.vj_id || 1;
-		this.vj_fecha           = params.vj_fecha || "";
+		this.fecha          	= params.fecha || "";
 		this.vj_hora_inicial    = params.vj_hora_inicial || "";
 		// this.vj_hora_final      = params.vj_hora_final || "8:15";
 		// this.vj_hora_total      = params.vj_hora_total || "8:25";
@@ -92,6 +92,18 @@ class Viajes {
 			type: "POST",
 			cache: false,
 			url :this.getBaseApiUrl() + "listaViajes",
+			// url :"../crudVehiculo?opcion=buscar",
+
+			data: params
+			
+		});
+	}
+	BuscarFecha(params){
+		return $.ajax({
+			//dataType: 'text',
+			type: "POST",
+			cache: false,
+			url :this.getBaseApiUrl() + "consultaViajeFecha",
 			// url :"../crudVehiculo?opcion=buscar",
 
 			data: params

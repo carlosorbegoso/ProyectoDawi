@@ -3,6 +3,7 @@ package com.dawi.sysbus.models;
 import java.sql.Date;
 import java.sql.Time;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -24,7 +25,8 @@ public class Viaje {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int vj_id;
     // @Column(name = "vj_fecha")
-    private Date vj_fecha;
+    @Column(name = "vj_fecha")
+    private String fecha;
     private String vj_hora_inicial;
     // private Time vj_hora_final;
     // private Time vj_hora_total;

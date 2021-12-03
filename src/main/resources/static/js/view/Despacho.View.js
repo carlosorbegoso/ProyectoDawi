@@ -94,8 +94,8 @@ $(function () {
 	//     });
 	document.getElementById('txtFecha').addEventListener('change', function (e) {
 		e.preventDefault();
-		ViajeActivo.vj_fecha = this.value;
-
+		ViajeActivo.fecha = this.value;
+		ViajesBuscarFecha({fecha:this.value});
 	});
 	document.getElementById('cboRutaNombre').addEventListener('change', function (e) {
 		e.preventDefault();

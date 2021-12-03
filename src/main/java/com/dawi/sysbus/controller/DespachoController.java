@@ -105,6 +105,13 @@ public class DespachoController {
 		
 		return salida;
 	}
+	
+	@RequestMapping("/consultaViajeFecha")
+	@ResponseBody
+	public List<Viaje> consultaViajeFecha(String fecha){
+		List<Viaje> lista = despachoService.listarViajePorFecha(fecha);
+		return lista;
+	}
 
 
 	

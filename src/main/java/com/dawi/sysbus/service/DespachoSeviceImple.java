@@ -37,5 +37,11 @@ public class DespachoSeviceImple implements IDespachoService{
         
     }
 
+    @Override
+    public List<Viaje> listarViajePorFecha(String fecha) {
+        
+        return repository.findByFecha(fecha);
+    }
+
      
 }

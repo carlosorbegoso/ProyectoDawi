@@ -128,6 +128,44 @@ function ViajesBuscar(params) {
 	}
 }
 
+
+function ViajesBuscarFecha(params) {
+	try {
+		var viaje = new Viajes();
+		viaje.BuscarFecha(params).done(function (rs, texStatus, jqXHR) {
+			var html = `<table class="table table-hover">
+						<thead>	
+							<tr>
+								<th>#</th>
+								<th>UNIDAD</th>
+								<th>HORA SALIDA</th>
+							</tr>
+						</thead>
+				`;
+			var n = 0;
+			for (var v in rs) {
+				var V = rs[v];
+				n += 1;
+				html += `
+						<tbody>
+							<tr>
+								<th>${n}</th>
+								<th> ${V.vehiculo.codigo}-${V.vehiculo.veh_nro_placa}</th>
+								<th>${V.vj_hora_inicial}</th>
+							</tr>
+						</tbody>
+				`;
+			}
+			document.getElementById('contenedorListaSalida').innerHTML = html;
+			//PanelVer('cardEmpleadoBuscar');
+
+		}).fail(function (jqXHR, texStatus, errorThrown) {
+			console.log("Buscar", texStatus, errorThrown);
+		});
+	} catch (e) {
+		console.log(e);
+	}
+}
 function ViajesGuardar(params){
 	
 	try {
@@ -159,4 +197,4 @@ function ViajesGuardar(params){
 	}
 }
 
-ViajesBuscar();
+//ViajesBuscar();
