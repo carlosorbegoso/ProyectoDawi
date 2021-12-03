@@ -31,7 +31,7 @@ function agregarGrilla(lista) {
 			{ data: "veh_color" },
 			{ data: "veh_marca" },
 			{ data: "veh_modelo" },
-			{ data: "propietario.pr_nombre"},
+			{ data: "propietario.pr_nombre" },
 			{
 				data: function (row, type, val, meta) {
 					var salida = '<button type="button" style="width: 90px" class="btn btn-info btn-sm" onclick="editar(\'' + row.vehi_id + '\',\'' + row.codigo + '\',\'' + row.veh_nro_placa + '\',\'' + row.veh_nro_serie + '\',\'' + row.veh_nro_vin + '\',\'' + row.veh_nro_motor + '\',\'' + row.veh_color + '\',\'' + row.veh_marca + '\',\'' + row.veh_modelo + '\',\'' + row.vehi_placa_vigente + '\',\'' + row.vehi_placa_anterior + '\',\'' + row.vehi_estado + '\',\'' + row.vehi_anotaciones + '\',\'' + row.vehi_sede + '\',\'' + row.propietario.pr_id + '\')">Editar</button>';
@@ -126,7 +126,6 @@ function editar(vehi_id, codigo, veh_nro_placa, veh_nro_serie, veh_nro_vin, veh_
 	$('#id_act_anotaciones').val(vehi_anotaciones);
 	$('#id_act_sede').val(vehi_sede);
 	$('#id_act_propietario').val(pr_id);
-	console.log(pr_id);
 	$('#id_div_modal_actualiza').modal("show");
 }
 

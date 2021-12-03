@@ -4,10 +4,15 @@ import java.sql.Date;
 import java.sql.Time;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Data;
 
@@ -27,7 +32,9 @@ public class Viaje {
     private String vj_ruta;
     private String vj_lado;
     // private int vj_nro_viaje;
-    private int id_conductor;
-    private int id_vehiculo;
-
+    private String conductor_nombre;
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "vehi_id")
+	private Vehiculo vehiculo;
 }

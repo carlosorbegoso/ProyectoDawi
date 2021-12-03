@@ -11,7 +11,6 @@ $(function () {
 		$.each(lista, function (i, item) {
 			let lis;
 			lis = listaConductor.push(item.nombre + ' ' + item.tr_apellidoP + ' ' + item.tr_apellidoM);
-			console.log(item.nombre);
 		});
 		var availableTags = listaConductor;
 		//   // $("#id_reg_propietario").append("<option value=" + item.pr_id + ">" + item.pr_nombre + " " + item.pr_apellidoP + " " + item.pr_apellidoM + "</option>");
@@ -112,7 +111,7 @@ function ViajesBuscar(params) {
 						<tbody>
 							<tr>
 								<th>${n}</th>
-								<th> ${V.id_vehiculo}</th>
+								<th> ${V.vehiculo.codigo}-${V.vehiculo.veh_nro_placa}</th>
 								<th>${V.vj_hora_inicial}</th>
 							</tr>
 						</tbody>

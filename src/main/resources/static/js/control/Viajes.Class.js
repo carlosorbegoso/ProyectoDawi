@@ -7,6 +7,7 @@ class Viajes {
 	Nuevo(params = []){
 		try{
 			this.set(params);
+			this.setVehiculo(params);
 		}catch(e){
 			console.log(e);
 		}
@@ -21,9 +22,20 @@ class Viajes {
 		this.vj_ruta     		= params.vj_ruta || "";
 		this.vj_lado     		= params.vj_lado || "";
 		// this.vj_nro_viaje		= params.vj_nro_viaje || "";
-		this.id_conductor		= params.id_conductor || 1;
-		this.id_vehiculo 		= params.id_vehiculo || "";
-}
+		this.conductor_nombre	= params.conductor_nombre || '';
+		this.vehiculo 			= params.vehiculo || 1;
+		
+
+	}
+	setVehiculo(args){
+		this.vehiculo.vehi_id			= args.vehi_id	|| 1;
+		this.vehiculo.codigo			= args.codigo	|| "";
+		this.vehiculo.veh_nro_placa		= args.veh_nro_placa	|| "";
+		this.vehiculo.veh_nro_serie		= args.veh_nro_serie	|| "";
+	}
+	getVehiculo(){
+		return this.vehiculo;
+	}
 
 	get(){
 		var atributos = {};

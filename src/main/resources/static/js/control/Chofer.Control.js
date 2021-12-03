@@ -7,7 +7,6 @@ $("#id_btn_filtrar").click(function(){
 		
 	});
 });
-console.log(vehiculos);
 agregarGrilla(vehiculos);
 function agregarGrilla(lista){
 	 $('#id_table').DataTable().clear();

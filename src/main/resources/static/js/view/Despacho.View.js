@@ -115,10 +115,10 @@ $(function () {
 	});
 	document.getElementById('cboVehiculo').addEventListener('change', function (e) {
 		e.preventDefault();
-		ViajeActivo.id_vehiculo = this.value;
+		ViajeActivo.vehiculo.codigo = this.value;
 	});
 	document.getElementById('txtConductor').addEventListener('change', function (e) {
-		// ViajeActivo.id_conductor = this.value;
+		ViajeActivo.conductor_nombre = this.value;
 	});
 
 
